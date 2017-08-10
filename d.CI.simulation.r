@@ -80,8 +80,8 @@ CI.bi = function(n, p, n.sim, ylabel = FALSE){
 fun <- function(n1 = n, p1 = p){
     x = rbinom(1, size = n1, prob = p1)
    pe = x/n1
-  res = binom.test(x, n1, p1)[[4]]
-  c(L = res[1], U = res[2], pe = pe)
+   CI = binom.test(x, n1, p1)[[4]]
+  c(L = CI[1], U = CI[2], pe = pe)
   }
   
   sim <- t(replicate(n.sim, fun()))
