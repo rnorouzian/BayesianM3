@@ -1,6 +1,6 @@
 biling.survey = function(N = 40, pYes = .5, random = TRUE){
                                                
-if(!random) set.seed(0) else set.seed(NULL) 
+if(random) set.seed(NULL) else set.seed(0) 
   
 ResponseSequence = sample(x = 0:1, prob = c(1 - pYes, pYes), size = N, replace = TRUE)  # Generate a random sample of N responses
                                                                                         # (Yes = 1, No = 0)
