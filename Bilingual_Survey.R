@@ -1,7 +1,5 @@
-biling.survey = function(N = 1e4, pYes = .5, random = TRUE, responses = FALSE){
-  
-  #  N     the total number of people to survey, denoted N.
-  #  pYes  TRUE probability of getting a Yes.  
+biling.survey = function(N = 50, pYes = .5, random = TRUE, responses = FALSE){ #  "N"    Total number of parents to survey.
+                                                                                #  "pYes" TRUE probability of getting a Yes.  
   if(!random) set.seed(0) else set.seed(NULL) 
   
   # Generate a random sample of N responses (Yes = 1, No = 0):
