@@ -3,7 +3,7 @@ biling.survey = function(N = 50, pYes = .5, random = TRUE, responses = FALSE){ #
   if(!random) set.seed(0) else set.seed(NULL) 
   
   # Generate a random sample of N responses (Yes = 1, No = 0):
-  ResponseSequence = sample(x = c(0, 1), prob = c(1 - pYes, pYes), size = N, replace = TRUE)
+  ResponseSequence = sample(x = 0:1, prob = c(1 - pYes, pYes), size = N, replace = TRUE)
   
   # Compute the running proportion of Yeses:
   r = cumsum( ResponseSequence ) # Cumulative sum of Yeses at end of n steps.
