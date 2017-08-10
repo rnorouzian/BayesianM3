@@ -25,7 +25,7 @@ biling.survey = function(N = 1e4, pYes = .5, random = TRUE, responses = FALSE){
     axis(2, at = seq(0, 1, len = 6), labels = paste0(seq(0, 100, len = 6), "%"))
     
     # Plot a dotted horizontal reference line:
-    abline( h = pYes, lty = 2, col = "red" )
+    abline( h = pYes, lty = 2, col = 2 )
     
     text(mean(par("usr")[1:2]), pYes, "TRUE Proportion of \"YES\"", pos = 3, font = 2, col = 4)
     
