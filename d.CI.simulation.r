@@ -27,8 +27,7 @@ function(x) optimize(f, interval = a[[i]], alpha = x, q = t, df = df, tol = 1e-1
 CI[which.max(ave(1:nrow(CI), do.call(paste, round(data.frame(CI), 3)), FUN = seq_along)), ]
     
   }
-  
-  
+    
 fun <- function(db = d, n1b = n1, n2b = n2, conf.levelb = conf.level){ 
   
    N = ifelse(is.na(n2b), n1b, (n1b * n2b)/(n1b + n2b))
