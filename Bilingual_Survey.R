@@ -6,8 +6,7 @@ ResponseSequence = sample(x = 0:1, prob = c(1 - pYes, pYes), size = N, replace =
                                                                                         # (Yes = 1, No = 0)
 runProp = cumsum( ResponseSequence ) / 1:N   # Compute the running proportion of Yeses:
 
-original.par = par(no.readonly = TRUE)
-on.exit(par(original.par))    
+original.par = par(no.readonly = TRUE)   ;  on.exit(par(original.par))    
 par(mgp = c(2, .5, 0), las = 1, tck = -.02, font.lab = 2, cex.lab = 1)
 
 plot.ts(runProp, ty = "o", ylim = c(0, 1), 
