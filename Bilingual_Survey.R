@@ -18,8 +18,7 @@ biling.survey = function(N = 50, pYes = .5, random = TRUE, responses = FALSE){ #
             yaxt = "n", pch = 21, bg = 3, xlim = c(1, N),
             xlab = "Number of Respondents", ylab = "Proportion of Yes",
             main = "Bilingual Education Survey", cex = .9)
-    
-    axis(1, at = 1)
+
     axis(2, at = seq(0, 1, len = 6), labels = paste0(seq(0, 100, len = 6), "%"))
     
     # Plot a dotted horizontal reference line:
