@@ -14,7 +14,7 @@ biling.survey = function(N = 1e4, pYes = .5, random = TRUE, responses = FALSE){
   
     original.par = par(no.readonly = TRUE)
     on.exit(par(original.par))
-    par(mgp = c(2, .5, 0), las = 1, tck = -.02, font.lab = 2, cex.lab = 1)
+    par(mgp = c(2, .5, 0), las = 1, tck = -.02, font.lab = 2)
     
     plot.ts(runProp, ty = "o", ylim = c(0, 1), 
             yaxt = "n", pch = 21, bg = 3, xlim = c(1, N),
