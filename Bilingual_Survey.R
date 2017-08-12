@@ -2,7 +2,7 @@ biling.survey = function(N = 40, pBi = .5, ...){
   
 ResponseSequence = sample(x = 0:1, prob = c(1 - pBi, pBi), size = N, replace = TRUE)  # Generate a random sample of N responses
                                                                                         # (B = 1, M = 0)
-runProp = cumsum(ResponseSequence) / 1:N   # Compute the running proportion of Yeses:
+runProp = cumsum(ResponseSequence) / 1:N   # Compute the running proportion of B:
 
 original.par = par(no.readonly = TRUE)   ;  on.exit(par(original.par))    
 par(mgp = c(2, .5, 0), las = 1, tck = -.02, font.lab = 2, cex.lab = 1, ...)
