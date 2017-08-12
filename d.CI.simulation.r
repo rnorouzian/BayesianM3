@@ -68,10 +68,10 @@ d.CI.sim(d = .5, n1 = 20, n.sim = 20, ylabel = TRUE)
 
 CI.bi = function(n, p, n.sim, ylabel = FALSE){
   
-fun <- function(n1 = n, p1 = p){
-    x = rbinom(1, size = n1, prob = p1)
-   pe = x/n1
-   CI = binom.test(x, n1, p1)[[4]]
+fun <- function(){
+    x = rbinom(1, size = n, prob = p)
+   pe = x/n
+   CI = binom.test(x, n, p)[[4]]
   c(L = CI[1], U = CI[2], pe = pe)
   }
   
@@ -84,7 +84,7 @@ fun <- function(n1 = n, p1 = p){
   on.exit(par(original.par))
   
   par(mgp = c(2, .2, 0), tck = -.015)
-  plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xlab = "Proportion of Agreement", font.lab = 2)
+  plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xlab = "Proportion of (B)", font.lab = 2)
   
   abline(h = 1:n.sim, col = 8, lty = 3)
   abline(v = p, lty = 2, col = 2)
