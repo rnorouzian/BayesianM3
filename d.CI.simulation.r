@@ -14,7 +14,7 @@ f <- function (ncp, alpha, q, df) {
     abs(suppressWarnings(pt(q = t, df = df, ncp, lower.tail = FALSE)) - alpha)
   }
     
-a = lapply(14:ifelse(da!= 0, d*sqrt(N)+5, 30), function(x) c(-x, x))
+a = lapply(14:ifelse(da!= 0, da*sqrt(N)+5, 30), function(x) c(-x, x))
     
 CI = matrix(NA, length(a), 2)
     
