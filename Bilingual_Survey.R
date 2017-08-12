@@ -1,6 +1,6 @@
-biling.survey = function(N = 40, pYes = .5, ...){
+biling.survey = function(N = 40, pBi = .5, ...){
   
-ResponseSequence = sample(x = 0:1, prob = c(1 - pYes, pYes), size = N, replace = TRUE)  # Generate a random sample of N responses
+ResponseSequence = sample(x = 0:1, prob = c(1 - pBi, pBi), size = N, replace = TRUE)  # Generate a random sample of N responses
                                                                                         # (Yes = 1, No = 0)
 runProp = cumsum(ResponseSequence) / 1:N   # Compute the running proportion of Yeses:
 
@@ -12,9 +12,9 @@ plot.ts(runProp, ty = "o", ylim = c(0, 1), yaxt = "n", pch = 21, bg = 3, xlab = 
     
 axis(2, at = seq(0, 1, len = 6), labels = paste0(seq(0, 100, len = 6), "%"))
     
-abline(h = pYes, lty = 2, col = 2)
+abline(h = pBi, lty = 2, col = 2)
     
-text(mean(par("usr")[1:2]), pYes, "TRUE Proportion of \"YES\"", pos = 3, font = 2, col = 4)
+text(mean(par("usr")[1:2]), pBi, "TRUE Proportion of \"YES\"", pos = 3, font = 2, col = 4)
     
 ResponseLetters = paste( c("N","Y")[ResponseSequence[1:10] + 1], collapse ="" )    # Display the first 10 response sequence
     
@@ -23,4 +23,4 @@ displayString = paste0("Response Sequence = ", ResponseLetters, ". . .")
 text(N, c(1, .95), c(displayString, paste0("Proportion of Y in ", N, " responses = ", runProp[N])), adj = c(1, .5), col = "red4", font = 2, cex = .8)
 }
 #Example of use:
-biling.survey(N = 1e3, pYes = .6)
+biling.survey(N = 100, pBi = .75)
