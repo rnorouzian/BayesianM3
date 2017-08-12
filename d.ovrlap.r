@@ -22,7 +22,7 @@ text(d[i], max(H$y), bquote(bolditalic(H[.(i-1)])), pos = 3, xpd = TRUE)
 
 axis(1, at = d[i], col = i, col.axis = i, mgp = c(1, .4, -.6), font = 2)
 
-segments(d[i], 0, d[i], max(H$y), lty = 3, col = 1)
+segments(d[i], 0, d[i], max(H$y), lty = 3)
  
    }
 
