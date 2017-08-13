@@ -2,11 +2,11 @@
 d.overlap = function(n1, n2 = NA, d){
   
   options(warn = -1)
-    N = ifelse(is.na(n2), n1, (n1 * n2)/(n1 + n2))
-   df = ifelse(is.na(n2), n1 - 1, (n1 + n2) - 2)
- d.SE = 1/sqrt(N)  ; ncp.min = min(d)*sqrt(N) ;  ncp.max = max(d)*sqrt(N)
+      N = ifelse(is.na(n2), n1, (n1 * n2)/(n1 + n2))
+     df = ifelse(is.na(n2), n1 - 1, (n1 + n2) - 2)
+ncp.min = min(d)*sqrt(N) ;  ncp.max = max(d)*sqrt(N)
   
-min.d = d.SE*qt(1e-3, df, ncp.min)  ;  max.d = d.SE*qt(0.99, df, ncp.max)
+min.d = qt(1e-3, df, ncp.min)/sqrt(N)  ;  max.d = qt(0.99, df, ncp.max)/sqrt(N)
   
   par(mar = c(5.1, 4.1, 6.1, 2.1))
     
