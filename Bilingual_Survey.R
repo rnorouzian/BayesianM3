@@ -20,7 +20,7 @@ biling.survey = function(N = 40, pBi = .5, ...){
   
   displayString = paste0("Response Sequence = ", ResponseLetters, ". . .")
   
-  text(N, c(1, .95), c(displayString, paste0("Proportion of B in ", N, " responses = ", runProp[N])), adj = c(1, .5), col = "red4", font = 2, cex = .8)
+  text(N, c(1, .95), c(displayString, paste0("Proportion of B in ", N, " responses = ", runProp[N]*1e2, "%")), adj = c(1, .5), col = "red4", font = 2, cex = .8)
 }
 #Example of use:
 biling.survey(N = 100, pBi = .75)
