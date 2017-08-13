@@ -1,6 +1,3 @@
-#############################  
-# CI Simulation for binomial
-#############################
 CI.bi = function(n, p, n.sim, ylabel = FALSE){
   
   fun = function(){
@@ -10,13 +7,11 @@ CI.bi = function(n, p, n.sim, ylabel = FALSE){
    c(CI[1], CI[2], pe)
   }
   
-  sim <- t(replicate(n.sim, fun()))
-  capture = sim[ ,1] <= p & p <= sim[ ,2]
-  
-  y = unlist(lapply(1:n.sim, function(x) c(x, x)))
+    sim = t(replicate(n.sim, fun()))
+capture = sim[ ,1] <= p & p <= sim[ ,2]
+      y = unlist(lapply(1:n.sim, function(x) c(x, x)))
   
   original.par = par(no.readonly = TRUE) ; on.exit(par(original.par))
-  
   par(mgp = c(2, .2, 0), tck = -.015)
   plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xlab = "Proportion of (B)", font.lab = 2)
   
