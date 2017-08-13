@@ -30,4 +30,4 @@ CI.bi = function(n, p, n.sim, ylabel = FALSE){
   noquote(paste0("Coverage = ", mean(capture)*1e2, "%")) 
 }
 # Example of use:
-CI.bi(n = 15, p = .6, n.sim = 20, ylabel = TRUE)
+CI.bi(n = 100, p = .75, n.sim = 20, ylabel = TRUE)
