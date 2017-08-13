@@ -4,7 +4,7 @@
 CI.bi = function(n, p, n.sim, ylabel = FALSE){
   
   fun = function(){
-    x = rbinom(1, size = n, prob = p)
+    x = rbinom(1, n, p)
    pe = x/n
    CI = binom.test(x, n, p)[[4]]
    c(CI[1], CI[2], pe)
@@ -30,4 +30,4 @@ CI.bi = function(n, p, n.sim, ylabel = FALSE){
   noquote(paste0("Coverage = ", mean(capture)*1e2, "%")) 
 }
 # Example of use:
-CI.bi(n = 15, p = .6, n.sim = 20, ylabel = T)
+CI.bi(n = 15, p = .6, n.sim = 20, ylabel = TRUE)
