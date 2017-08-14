@@ -22,7 +22,7 @@ capture = sim[ ,1] <= p & p <= sim[ ,2]
   if(ylabel) axis(2, at = 1:n.sim, labels = paste0("Repeat ", rev(1:n.sim)), font = 2, las = 1, cex.axis = .8, tck = -.006)
   points(sim[, 3], 1:n.sim, pch = 19, col = ifelse(capture, 1, 2), cex = ifelse(n.sim > 50, .6, .65))
   
-  noquote(paste0("Coverage = ", mean(capture)*1e2, "%")) 
+  cat("Coverage =", mean(capture)*1e2, "%", "\n", "Long-run proportion =", mean(sim[, 3])*1e2, "%")
 }
 # Example of use:
 CI.bi(n = 100, p = .75, n.sim = 20, ylabel = TRUE)
