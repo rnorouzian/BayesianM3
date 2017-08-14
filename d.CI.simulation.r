@@ -1,6 +1,3 @@
-#############################  
-# CI Simulation for Cohen's d
-#############################
 d.CI.sim <- function(d, n1, n2 = NA, conf.level = .95, n.sim = 5, ylabel = FALSE){
   
 CI.d <- function(da = d, n1a = n1, n2a = n2, conf.levela = conf.level){
@@ -39,16 +36,12 @@ c(CI = CI.d(da = ds, n1a = n1, n2a = n2, conf.levela = conf.level), ds = ds)
   }
   
   sim <- t(replicate(n.sim, fun()))
-  
   capture = sim[ ,1] <= d & d <= sim[ ,2]
   
-  y = unlist(lapply(1:n.sim, function(x) c(x, x)))
-  
-  original.par = par(no.readonly = TRUE)
-  on.exit(par(original.par))
-  
+  original.par = par(no.readonly = TRUE) ; on.exit(par(original.par))
   par(mgp = c(2, .2, 0), tck = -.015)  
-  plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xlab = "Effect Size", font.lab = 2)
+                
+  plot(sim[, 1:2], rep(1:n.sim, 2), ty = "n", ylab = NA, yaxt = "n", xlab = "Effect Size", font.lab = 2)
   axis(1, at = d, col.axis = 2, col = 2, font = 2)
   abline(h = 1:n.sim, col = 8, lty = 3)
   if(ylabel) axis(2, at = 1:n.sim, labels = paste0("Researcher ", rev(1:n.sim)), font = 2, las = 1, cex.axis = .8, tck = -.006)
