@@ -13,11 +13,12 @@ capture = sim[ ,1] <= p & p <= sim[ ,2]
   
   original.par = par(no.readonly = TRUE) ; on.exit(par(original.par))
   par(mgp = c(2, .2, 0), tck = -.015)
-  plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xlab = "Proportion of (B)", font.lab = 2)
+  plot(sim[, 1:2], y, ty = "n", ylab = NA, yaxt = "n", xaxt = "n", xlab = "Proportion of (B)", font.lab = 2)
   
   abline(h = 1:n.sim, col = 8, lty = 3)
   abline(v = p, lty = 2, col = 2)
   segments(sim[ ,1], 1:n.sim, sim[ ,2], 1:n.sim, lend = 1, col = ifelse(capture, 1, 2))
+  axis(1, at = axTicks(1), labels = paste0(axTicks(1)*1e2, "%"))
   axis(1, at = p, col.axis = 2, col = 2, font = 2)
   if(ylabel) axis(2, at = 1:n.sim, labels = paste0("Repeat ", rev(1:n.sim)), font = 2, las = 1, cex.axis = .8, tck = -.006)
   points(sim[, 3], 1:n.sim, pch = 19, col = ifelse(capture, 1, 2), cex = ifelse(n.sim > 50, .6, .65))
