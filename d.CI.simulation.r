@@ -15,14 +15,12 @@ a = lapply(14:ifelse(da!= 0, da*sqrt(N)+5, 30), function(x) c(-x, x))
     
 CI = matrix(NA, length(a), 2)
     
-for(i in 1:length(a)){
-      
+for(i in 1:length(a)){    
 CI[i,] = sapply(c(alpha, 1-alpha),
 function(x) optimize(f, interval = a[[i]], alpha = x, q = t, df = df, tol = 1e-12)[[1]]*d.SE)
   }  
     
 CI[which.max(ave(1:nrow(CI), do.call(paste, round(data.frame(CI), 3)), FUN = seq_along)), ]
-    
   }
     
 fun <- function(db = d, n1b = n1, n2b = n2, conf.levelb = conf.level){ 
