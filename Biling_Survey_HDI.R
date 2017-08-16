@@ -5,21 +5,20 @@ prob_ab <- function(fun, a, b, domain){
 
 invert_prob_ab <- function(fun, a, prob, domain){  
   O <- function(b, fun, a, prob){
-    (prob_ab(fun, a, b, domain = domain) - prob)^2
-  }
+  (prob_ab(fun, a, b, domain = domain) - prob)^2
+}
   
   b <- optimize(O, c(a, domain[2]), a = a, fun = fun, prob = prob)$minimum
   return(b)
 }
 
 HDI <- function(fun, prob = .95, domain = c(0, 1)){
-  
   mode <- optimize(fun, interval = domain, maximum = TRUE, tol = 1e-12)[[1]]
-    O <- function(a, fun, prob, domain){
-    b <- invert_prob_ab(fun, a, prob, domain)  
-    b - a
-  }
-  abest <- optimize(O, c(0, mode), fun = fun, prob = prob, domain = domain)$minimum
-  b <- invert_prob_ab(fun, abest, prob, domain) 
-  return(c(abest,b))
+     O <- function(a, fun, prob, domain){
+     b <- invert_prob_ab(fun, a, prob, domain)  
+     b - a
+}
+ abest <- optimize(O, c(0, mode), fun = fun, prob = prob, domain = domain)$minimum
+     b <- invert_prob_ab(fun, abest, prob, domain) 
+     return(c(abest,b))
 }
