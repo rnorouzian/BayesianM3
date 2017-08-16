@@ -2,12 +2,10 @@ prob_ab <- function(fun, a, b, domain){
   total.area <- integrate(fun, domain[1], domain[2])[[1]]
   integrate(fun, a, b)[[1]] / total.area
 }
-
 invert_prob_ab <- function(fun, a, prob, domain){  
   O <- function(b, fun, a, prob){
   (prob_ab(fun, a, b, domain = domain) - prob)^2
 }
-  
   b <- optimize(O, c(a, domain[2]), a = a, fun = fun, prob = prob)$minimum
   return(b)
 }
