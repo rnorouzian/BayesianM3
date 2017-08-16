@@ -1,13 +1,31 @@
-HDI <- function(fun, cover = .95, range = c(0, 1)){
+prob_ab <- function(fun, a, b, domain){
+  total.area <- integrate(fun, domain[1], domain[2])[[1]]
+  integrate(fun, a, b)[[1]] / total.area
+}
+
+invert_prob_ab <- function(fun, a, prob, domain){
   
-  mode = optimize(fun, interval = range, maximum = TRUE, tol = 1e-12)[[1]]
-  total.area = integrate(fun, range[1], range[2])[[1]]
-  
-  O <- function(d){
-    parea <- integrate(fun, mode-d, mode+d)[[1]] / total.area
-    (cover - parea)^2
+  O <- function(b, fun, a, prob){
+    (prob_ab(fun, a, b, domain = domain) - prob)^2
   }
-  o <- optimize(O, c(0, range[2]/2 - 1e-2))[[1]]
   
-  return(c(mode-o, mode+o))
+  b <- optimize(O, c(a, domain[2]), a = a, fun = fun, prob = prob)$minimum
+  
+  return(b)
+}
+
+HDI <- function(fun, prob = .95, domain = c(0, 1)){
+  
+  mode <- optimize(fun, interval = domain, maximum = TRUE, tol = 1e-12)[[1]]
+    O <- function(a, fun, prob, domain){
+    b <- invert_prob_ab(fun, a, prob, domain)
+    
+    b - a
+  }
+  
+  abest <- optimize(O, c(0, mode), fun = fun, prob = prob, domain = domain)$minimum
+  
+  b <- invert_prob_ab(fun, abest, prob, domain)
+  
+  return(c(abest,b))
 }
