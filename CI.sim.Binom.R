@@ -10,7 +10,6 @@ CI.bi = function(n, p, n.sim, ylabel = FALSE){
     sim = t(replicate(n.sim, fun()))
 capture = sim[ ,1] <= p & p <= sim[ ,2]
   
-  original.par = par(no.readonly = TRUE) ; on.exit(par(original.par))
   par(mgp = c(2, .2, 0), tck = -.015)
   plot(sim[, 1:2], rep(1:n.sim, 2), ty = "n", ylab = NA, yaxt = "n", xaxt = "n", xlab = "Proportion of (B)", font.lab = 2)
   
